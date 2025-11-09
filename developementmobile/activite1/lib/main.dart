@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'interfaces/redacteur_interface.dart';
 
 void main() {
   runApp(const MonAppli());
@@ -47,15 +48,47 @@ class PageAccueil extends StatelessWidget {
           ),
         ],
       ),
-      body: const SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Column(
           children: [
-            HeroImage(),
-            PartieTitre(),
-            PartieTexte(),
-            PartieIcone(),
-            PartieRubrique(),
-            SizedBox(height: 20),
+            const HeroImage(),
+            const PartieTitre(),
+            const PartieTexte(),
+            const PartieIcone(),
+            const PartieRubrique(),
+            const SizedBox(height: 32),
+            //* Bouton Liste des rédacteurs
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: SizedBox(
+                width: double.infinity,
+                height: 56,
+                child: ElevatedButton.icon(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const RedacteurInterface(),
+                      ),
+                    );
+                  },
+                  icon: const Icon(Icons.people, size: 24),
+                  label: const Text(
+                    'Liste des rédacteurs',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFFE91E63),
+                    foregroundColor: Colors.white,
+                    elevation: 4,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 32),
           ],
         ),
       ),
